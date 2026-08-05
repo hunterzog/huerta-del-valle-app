@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Barra superior roja, -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B71C1C"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Control de Válvulas"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- ScrollView por si en el futuro se agregan más válvulas y no entran en pantalla -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ══ VÁLVULA 1 — Carga de agua ══ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tvNombreV1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Carga de agua"
+                    android:textSize="16sp"
+                    android:textColor="#222222"/>
+
+                <TextView
+                    android:id="@+id/tvEstadoV1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cerrada"
+                    android:textSize="13sp"
+                    android:textColor="#888888"
+                    android:layout_marginEnd="8dp"/>
+
+                <Switch
+                    android:id="@+id/swV1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- ══ VÁLVULA 2 — Nutriente A ══ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tvNombreV2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nutriente A"
+                    android:textSize="16sp"
+                    android:textColor="#222222"/>
+
+                <TextView
+                    android:id="@+id/tvEstadoV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cerrada"
+                    android:textSize="13sp"
+                    android:textColor="#888888"
+                    android:layout_marginEnd="8dp"/>
+
+                <Switch
+                    android:id="@+id/swV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- ══ VÁLVULA 3 — Nutriente B ══ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tvNombreV3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nutriente B"
+                    android:textSize="16sp"
+                    android:textColor="#222222"/>
+
+                <TextView
+                    android:id="@+id/tvEstadoV3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cerrada"
+                    android:textSize="13sp"
+                    android:textColor="#888888"
+                    android:layout_marginEnd="8dp"/>
+
+                <Switch
+                    android:id="@+id/swV3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- ══ VÁLVULA 4 — Nutriente C ══ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tvNombreV4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nutriente C"
+                    android:textSize="16sp"
+                    android:textColor="#222222"/>
+
+                <TextView
+                    android:id="@+id/tvEstadoV4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cerrada"
+                    android:textSize="13sp"
+                    android:textColor="#888888"
+                    android:layout_marginEnd="8dp"/>
+
+                <Switch
+                    android:id="@+id/swV4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <!-- ══ VÁLVULA 5 — Ácido pH ══ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/tvNombreV5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ácido pH"
+                    android:textSize="16sp"
+                    android:textColor="#222222"/>
+
+                <TextView
+                    android:id="@+id/tvEstadoV5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cerrada"
+                    android:textSize="13sp"
+                    android:textColor="#888888"
+                    android:layout_marginEnd="8dp"/>
+
+                <Switch
+                    android:id="@+id/swV5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/btnVolverValvulas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#B71C1C"
+        android:padding="16dp"
+        android:layout_margin="16dp"/>
+
+</LinearLayout>

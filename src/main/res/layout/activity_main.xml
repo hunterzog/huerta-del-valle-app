@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#F5F5F5">
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Huerta del Valle"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#2E7D32"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sistema Hidropónico"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        android:layout_marginBottom="40dp"/>
+
+    <!-- Label Usuario con (*) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuario "
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(*)"
+            android:textSize="13sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese su usuario"
+        android:inputType="text"
+        android:maxLength="30"
+        android:background="@drawable/bg_input"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="#212121"
+        android:textColorHint="#757575"/>
+
+    <!-- Label Contraseña con (*) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contraseña "
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(*)"
+            android:textSize="13sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese su contraseña"
+        android:inputType="textPassword"
+        android:maxLength="50"
+        android:background="@drawable/bg_input"
+        android:padding="16dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="#212121"
+        android:textColorHint="#757575"/>
+
+    <!-- Nota campos obligatorios -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="(*) Campos obligatorios"
+        android:textSize="11sp"
+        android:textColor="#B71C1C"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Botón principal -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Sesión"
+        android:backgroundTint="#2E7D32"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"/>
+
+    <!-- Botón secundario -->
+    <Button
+        android:id="@+id/btnRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrarse"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#2E7D32"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>

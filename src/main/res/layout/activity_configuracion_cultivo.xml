@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Barra superior -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2E7D32"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Configuración del Cultivo"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- Formulario con scroll -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- SEMILLA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌱 Semilla "
+                    android:textColor="#2E7D32"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(*)"
+                    android:textColor="#B71C1C"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etNombreSemilla"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de la semilla"
+                android:inputType="text"
+                android:maxLength="100"
+                android:background="@drawable/bg_input"
+                android:padding="16dp"
+                android:textColor="#212121"
+                android:textColorHint="#757575"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- NUTRIENTES -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🧪 Nutrientes "
+                    android:textColor="#2E7D32"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(*)"
+                    android:textColor="#B71C1C"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etNombreNutriente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre comercial del nutriente"
+                android:inputType="text"
+                android:maxLength="100"
+                android:background="@drawable/bg_input"
+                android:padding="16dp"
+                android:textColor="#212121"
+                android:textColorHint="#757575"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Componente 1 (*) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Componente 1 "
+                    android:textColor="#555555"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(*)"
+                    android:textColor="#B71C1C"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <EditText
+                    android:id="@+id/etComponente1Nombre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="Nombre"
+                    android:maxLength="100"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"
+                    android:layout_marginEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/etComponente1Cantidad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="ml/L"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"/>
+
+            </LinearLayout>
+
+            <!-- Componente 2 (opcional) -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Componente 2 (opcional)"
+                android:textColor="#555555"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <EditText
+                    android:id="@+id/etComponente2Nombre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="Nombre"
+                    android:maxLength="100"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"
+                    android:layout_marginEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/etComponente2Cantidad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="ml/L"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"/>
+
+            </LinearLayout>
+
+            <!-- Componente 3 (opcional) -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Componente 3 (opcional)"
+                android:textColor="#555555"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/etComponente3Nombre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="Nombre"
+                    android:maxLength="100"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"
+                    android:layout_marginEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/etComponente3Cantidad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="ml/L"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"/>
+
+            </LinearLayout>
+
+            <!-- PH -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚗️ Configuración pH "
+                    android:textColor="#2E7D32"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(*) "
+                    android:textColor="#B71C1C"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvTooltipPh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(?)"
+                    android:textColor="#1565C0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/etPhMinimo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="pH mínimo (0-14)"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"
+                    android:layout_marginEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/etPhMaximo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="pH máximo (0-14)"
+                    android:inputType="numberDecimal"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"/>
+
+            </LinearLayout>
+
+            <!-- TDS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊 Configuración TDS "
+                    android:textColor="#2E7D32"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(*) "
+                    android:textColor="#B71C1C"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvTooltipTds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(?)"
+                    android:textColor="#1565C0"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/etTdsMinimo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="TDS mínimo (ppm)"
+                    android:inputType="number"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"
+                    android:layout_marginEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/etTdsMaximo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="TDS máximo (ppm)"
+                    android:inputType="number"
+                    android:background="@drawable/bg_input"
+                    android:padding="16dp"
+                    android:textColor="#212121"
+                    android:textColorHint="#757575"/>
+
+            </LinearLayout>
+
+            <!-- RIEGO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="💧 Configuración Riego "
+                    android:textColor="#2E7D32"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(*)"
+                    android:textColor="#B71C1C"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <!-- Horas totales por día -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Horas totales de riego por día"
+                android:textColor="#555555"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <EditText
+                android:id="@+id/etHorasRiego"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ej: 3 horas"
+                android:inputType="numberDecimal"
+                android:background="@drawable/bg_input"
+                android:padding="16dp"
+                android:textColor="#212121"
+                android:textColorHint="#757575"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Riegos por día -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Riegos por día "
+                    android:textColor="#555555"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tvTooltipRiego"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(?)"
+                    android:textColor="#1565C0"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etRiegosPorDia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ej: 2 veces por día"
+                android:inputType="number"
+                android:background="@drawable/bg_input"
+                android:padding="16dp"
+                android:textColor="#212121"
+                android:textColorHint="#757575"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Nota campos obligatorios -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="(*) Campos obligatorios"
+                android:textSize="11sp"
+                android:textColor="#B71C1C"
+                android:layout_marginBottom="8dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Botones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF">
+
+        <Button
+            android:id="@+id/btnGuardarConfiguracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar Configuración"
+            android:backgroundTint="#2E7D32"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnVolverConfiguracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#2E7D32"/>
+
+    </LinearLayout>
+
+</LinearLayout>

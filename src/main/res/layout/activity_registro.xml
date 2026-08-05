@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuevo Usuario"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Nombre (*) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre "
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(*)"
+                android:textSize="13sp"
+                android:textColor="#B71C1C"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el nombre"
+            android:inputType="textPersonName"
+            android:maxLength="50"
+            android:background="@drawable/bg_input"
+            android:padding="16dp"
+            android:textColor="#212121"
+            android:textColorHint="#757575"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Apellido (*) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apellido "
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(*)"
+                android:textSize="13sp"
+                android:textColor="#B71C1C"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese el apellido"
+            android:inputType="textPersonName"
+            android:maxLength="50"
+            android:background="@drawable/bg_input"
+            android:padding="16dp"
+            android:textColor="#212121"
+            android:textColorHint="#757575"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Correo (opcional) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Correo electrónico"
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/etCorreoReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="correo@ejemplo.com"
+            android:inputType="textEmailAddress"
+            android:maxLength="100"
+            android:background="@drawable/bg_input"
+            android:padding="16dp"
+            android:textColor="#212121"
+            android:textColorHint="#757575"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Usuario (*) con tooltip -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usuario "
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(*) "
+                android:textSize="13sp"
+                android:textColor="#B71C1C"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvTooltipUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(?)"
+                android:textSize="13sp"
+                android:textColor="#1565C0"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etUsuarioReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre de usuario único"
+            android:inputType="textNoSuggestions"
+            android:maxLength="30"
+            android:background="@drawable/bg_input"
+            android:padding="16dp"
+            android:textColor="#212121"
+            android:textColorHint="#757575"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Contraseña (*) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contraseña "
+                android:textSize="13sp"
+                android:textColor="#212121"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(*)"
+                android:textSize="13sp"
+                android:textColor="#B71C1C"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etContrasenaReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese una contraseña"
+            android:inputType="textPassword"
+            android:maxLength="50"
+            android:background="@drawable/bg_input"
+            android:padding="16dp"
+            android:textColor="#212121"
+            android:textColorHint="#757575"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Nota campos obligatorios -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="(*) Campos obligatorios"
+            android:textSize="11sp"
+            android:textColor="#B71C1C"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Botón principal -->
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar"
+            android:backgroundTint="#2E7D32"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"/>
+
+        <!-- Botón secundario -->
+        <Button
+            android:id="@+id/btnVolver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#2E7D32"
+            android:padding="16dp"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

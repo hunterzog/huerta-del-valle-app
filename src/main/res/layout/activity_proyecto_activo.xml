@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Barra superior -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2E7D32"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvNombreProyectoActivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Proyecto Activo"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- Información del proyecto -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/tvFechaProyecto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#757575"/>
+
+        <TextView
+            android:id="@+id/tvSemillaProyecto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvNutrienteProyecto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#757575"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvDiasActivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#2E7D32"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+
+    <!-- Botones de acción -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Monitoreo en tiempo real -->
+        <Button
+            android:id="@+id/btnMonitoreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📊 Monitoreo en Tiempo Real"
+            android:backgroundTint="#1565C0"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Editar configuración del cultivo -->
+        <Button
+            android:id="@+id/btnEditarConfiguracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="⚙️ Editar Configuración"
+            android:backgroundTint="#E65100"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Historial de datos -->
+        <Button
+            android:id="@+id/btnHistorial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📋 Historial de Datos"
+            android:backgroundTint="#6A1B9A"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Evaluación diaria -->
+        <Button
+            android:id="@+id/btnEvaluacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🌱 Evaluación Diaria"
+            android:backgroundTint="#00838F"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Finalizar proyecto -->
+        <Button
+            android:id="@+id/btnFinalizarProyecto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="✅ Finalizar Proyecto"
+            android:backgroundTint="#2E7D32"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Volver -->
+        <Button
+            android:id="@+id/btnVolverActivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#2E7D32"
+            android:padding="16dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

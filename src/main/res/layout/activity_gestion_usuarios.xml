@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- Barra superior -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B71C1C"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gestión de Usuarios"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- Buscador y ordenamiento -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:background="#FFFFFF">
+
+        <EditText
+            android:id="@+id/etBuscarUsuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="Buscar en todos los campos..."
+            android:inputType="text"
+            android:background="@drawable/bg_input"
+            android:padding="12dp"
+            android:textColor="#212121"
+            android:textColorHint="#757575"
+            android:layout_marginEnd="8dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerOrdenar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <!-- Total registros -->
+    <TextView
+        android:id="@+id/tvTotalUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:paddingStart="16dp"
+        android:textSize="12sp"
+        android:textColor="#757575"
+        android:text="Total: 0 usuarios"/>
+
+    <!-- Encabezados de columnas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFEBEE"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvOrdenarNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Nombre ↕"
+            android:textSize="11sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvOrdenarUsuario"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="Usuario ↕"
+            android:textSize="11sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Correo"
+            android:textSize="11sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvOrdenarRol"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Rol ↕"
+            android:textSize="11sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvOrdenarEstado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Estado ↕"
+            android:textSize="11sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:text="Acciones"
+            android:textSize="11sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <!-- Lista de usuarios -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="0dp"/>
+
+    <!-- Paginación -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="#FFFFFF">
+
+        <Button
+            android:id="@+id/btnAnterior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anterior"
+            android:backgroundTint="#757575"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/tvPagina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Página 1 de 1"
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:layout_marginHorizontal="16dp"/>
+
+        <Button
+            android:id="@+id/btnSiguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Siguiente"
+            android:backgroundTint="#B71C1C"
+            android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+
+    <!-- Botones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#FFFFFF">
+
+        <Button
+            android:id="@+id/btnNuevoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ Registrar usuario"
+            android:backgroundTint="#B71C1C"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnVolverAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:backgroundTint="#FFFFFF"
+            android:textColor="#B71C1C"/>
+
+    </LinearLayout>
+
+</LinearLayout>
