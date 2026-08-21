@@ -26,8 +26,6 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
     private lateinit var etPhMaximo: EditText
     private lateinit var etTdsMinimo: EditText
     private lateinit var etTdsMaximo: EditText
-    private lateinit var etHorasTotalesDia: EditText
-    private lateinit var etRiegosPorDia: EditText
     private lateinit var btnGuardarConfiguracion: Button
     private lateinit var btnVolverConfiguracion: Button
 
@@ -45,11 +43,9 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
         etComponente3Nombre   = findViewById(R.id.etComponente3Nombre)
         etComponente3Cantidad = findViewById(R.id.etComponente3Cantidad)
         etPhMinimo            = findViewById(R.id.etPhMinimo)
-        etPhMaximo            = findViewById(R.id.etPhMaximo)
-        etTdsMinimo           = findViewById(R.id.etTdsMinimo)
-        etTdsMaximo           = findViewById(R.id.etTdsMaximo)
-        etHorasTotalesDia     = findViewById(R.id.etHorasRiego)
-        etRiegosPorDia        = findViewById(R.id.etRiegosPorDia)
+        etPhMaximo             = findViewById(R.id.etPhMaximo)
+        etTdsMinimo            = findViewById(R.id.etTdsMinimo)
+        etTdsMaximo            = findViewById(R.id.etTdsMaximo)
         btnGuardarConfiguracion = findViewById(R.id.btnGuardarConfiguracion)
         btnVolverConfiguracion  = findViewById(R.id.btnVolverConfiguracion)
 
@@ -65,8 +61,6 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
             etPhMaximo.setText(intent.getStringExtra("ph_maximo"))
             etTdsMinimo.setText(intent.getStringExtra("tds_minimo"))
             etTdsMaximo.setText(intent.getStringExtra("tds_maximo"))
-            etHorasTotalesDia.setText(intent.getStringExtra("horas_totales_dia"))
-            etRiegosPorDia.setText(intent.getStringExtra("riegos_por_dia"))
 
             // Precargar componentes
             intent.getStringExtra("comp1_nombre")?.let { etComponente1Nombre.setText(it) }
@@ -78,12 +72,6 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
         }
 
         // Tooltips
-        val tvTooltipRiego = findViewById<TextView>(R.id.tvTooltipRiego)
-        tvTooltipRiego.setOnClickListener {
-            Notificacion.informacion(this,
-                "Indica cuántas veces por día se realizará el riego. El sistema calculará automáticamente la duración de cada riego.")
-        }
-
         val tvTooltipPh = findViewById<TextView>(R.id.tvTooltipPh)
         tvTooltipPh.setOnClickListener {
             Notificacion.informacion(this,
@@ -110,20 +98,16 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
             val phMaximo      = etPhMaximo.text.toString().trim()
             val tdsMinimo     = etTdsMinimo.text.toString().trim()
             val tdsMaximo     = etTdsMaximo.text.toString().trim()
-            val horasTotales  = etHorasTotalesDia.text.toString().trim()
-            val riegosPorDia  = etRiegosPorDia.text.toString().trim()
 
             // Limpiar errores anteriores
-            etNombreSemilla.error     = null
-            etNombreNutriente.error   = null
-            etComponente1Nombre.error = null
+            etNombreSemilla.error       = null
+            etNombreNutriente.error     = null
+            etComponente1Nombre.error   = null
             etComponente1Cantidad.error = null
-            etPhMinimo.error          = null
-            etPhMaximo.error          = null
-            etTdsMinimo.error         = null
-            etTdsMaximo.error         = null
-            etHorasTotalesDia.error   = null
-            etRiegosPorDia.error      = null
+            etPhMinimo.error            = null
+            etPhMaximo.error            = null
+            etTdsMinimo.error           = null
+            etTdsMaximo.error           = null
 
             // Validar campos obligatorios
             var hayError = false
@@ -167,16 +151,6 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
                 if (!hayError) etTdsMaximo.requestFocus()
                 hayError = true
             }
-            if (horasTotales.isEmpty()) {
-                etHorasTotalesDia.error = "Las horas de riego son obligatorias"
-                if (!hayError) etHorasTotalesDia.requestFocus()
-                hayError = true
-            }
-            if (riegosPorDia.isEmpty()) {
-                etRiegosPorDia.error = "Los riegos por día son obligatorios"
-                if (!hayError) etRiegosPorDia.requestFocus()
-                hayError = true
-            }
 
             if (hayError) return@setOnClickListener
 
@@ -204,24 +178,6 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Validar riegos por día
-            val riegosPorDiaInt = riegosPorDia.toIntOrNull()
-            if (riegosPorDiaInt == null || riegosPorDiaInt < 1) {
-                Notificacion.error(this, "Los riegos por día deben ser al menos 1")
-                return@setOnClickListener
-            }
-
-            // Calcular duración de cada riego
-            val horasTotalesDouble = horasTotales.toDoubleOrNull()
-            if (horasTotalesDouble == null || horasTotalesDouble <= 0) {
-                Notificacion.error(this, "Las horas totales deben ser mayor a 0")
-                return@setOnClickListener
-            }
-
-            val duracionCadaRiego = horasTotalesDouble / riegosPorDiaInt
-            Notificacion.informacion(this,
-                "Cada riego durará ${String.format("%.1f", duracionCadaRiego)} horas")
-
             // Armar componentes
             val componentes = JSONArray()
             componentes.put(JSONObject().apply {
@@ -242,7 +198,7 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
             }
 
             guardarConfiguracion(idProyecto, semilla, nutriente, componentes,
-                phMinimo, phMaximo, tdsMinimo, tdsMaximo, horasTotales, riegosPorDia)
+                phMinimo, phMaximo, tdsMinimo, tdsMaximo)
         }
 
         // Botón volver
@@ -254,8 +210,7 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
     private fun guardarConfiguracion(
         idProyecto: Int, semilla: String, nutriente: String,
         componentes: JSONArray, phMinimo: String, phMaximo: String,
-        tdsMinimo: String, tdsMaximo: String,
-        horasTotalesDia: String, riegosPorDia: String) {
+        tdsMinimo: String, tdsMaximo: String) {
 
         btnGuardarConfiguracion.isEnabled = false
         btnGuardarConfiguracion.text = "Guardando..."
@@ -263,16 +218,14 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
         val queue = Volley.newRequestQueue(this)
 
         val datos = JSONObject()
-        datos.put("id_proyecto",       idProyecto)
-        datos.put("nombre_semilla",    semilla)
-        datos.put("nombre_nutriente",  nutriente)
-        datos.put("componentes",       componentes)
-        datos.put("ph_minimo",         phMinimo)
-        datos.put("ph_maximo",         phMaximo)
-        datos.put("tds_minimo",        tdsMinimo)
-        datos.put("tds_maximo",        tdsMaximo)
-        datos.put("horas_totales_dia", horasTotalesDia)
-        datos.put("riegos_por_dia",    riegosPorDia)
+        datos.put("id_proyecto",      idProyecto)
+        datos.put("nombre_semilla",   semilla)
+        datos.put("nombre_nutriente", nutriente)
+        datos.put("componentes",      componentes)
+        datos.put("ph_minimo",        phMinimo)
+        datos.put("ph_maximo",        phMaximo)
+        datos.put("tds_minimo",       tdsMinimo)
+        datos.put("tds_maximo",       tdsMaximo)
 
         val peticion = JsonObjectRequest(
             Request.Method.POST, Configuracion.URL_CONFIGURACION_CULTIVO, datos,

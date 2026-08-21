@@ -4,28 +4,32 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.Toast
 
 class AdministracionActivity : AppCompatActivity() {
 
     private lateinit var btnGestionUsuarios: Button
-
-    // Botón que lleva a la pantalla de control manual de válvulas
     private lateinit var btnControlValvulas: Button
+    private lateinit var btnControlBombas: Button
+    private lateinit var btnNivelAgua: Button
     private lateinit var btnVolver: Button
+
+    private var rol: String? = null
+    private var idUsuario: Int = 0
+    private var idProyecto: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_administracion)
 
-        // Vincular vistas
+        rol = intent.getStringExtra("rol")
+        idUsuario = intent.getIntExtra("id_usuario", 0)
+        idProyecto = intent.getIntExtra("id_proyecto", 0)
+
         btnGestionUsuarios = findViewById(R.id.btnGestionUsuarios)
         btnControlValvulas = findViewById(R.id.btnControlValvulas)
+        btnControlBombas   = findViewById(R.id.btnControlBombas)
+        btnNivelAgua       = findViewById(R.id.btnNivelAgua)
         btnVolver          = findViewById(R.id.btnVolver)
-
-        // Obtener rol del Intent
-        val rol        = intent.getStringExtra("rol") ?: ""
-        val idUsuario  = intent.getIntExtra("id_usuario", 0)
 
         btnGestionUsuarios.setOnClickListener {
             val intent = Intent(this, GestionUsuariosActivity::class.java)
@@ -34,8 +38,6 @@ class AdministracionActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Al tocar el botón, abre ControlValvulasActivity
-        // pasando el rol y el id del usuario, igual que se hace con las demás pantallas
         btnControlValvulas.setOnClickListener {
             val intent = Intent(this, ControlValvulasActivity::class.java)
             intent.putExtra("rol", rol)
@@ -43,7 +45,21 @@ class AdministracionActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Botón volver
+        btnControlBombas.setOnClickListener {
+            val intent = Intent(this, ControlBombasActivity::class.java)
+            intent.putExtra("rol", rol)
+            intent.putExtra("id_usuario", idUsuario)
+            startActivity(intent)
+        }
+
+        btnNivelAgua.setOnClickListener {
+            val intent = Intent(this, NivelAguaActivity::class.java)
+            intent.putExtra("rol", rol)
+            intent.putExtra("id_usuario", idUsuario)
+            intent.putExtra("id_proyecto", idProyecto)
+            startActivity(intent)
+        }
+
         btnVolver.setOnClickListener {
             finish()
         }

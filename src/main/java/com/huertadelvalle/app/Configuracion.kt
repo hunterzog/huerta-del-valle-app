@@ -15,17 +15,15 @@ object Configuracion {
     const val URL_CANCELAR_PROYECTO = "$BASE_URL/cancelar_proyecto.php"
     const val URL_FINALIZAR_PROYECTO = "$BASE_URL/finalizar_proyecto.php"
     const val URL_ULTIMA_MEDICION = "$BASE_URL/ultima_medicion.php"
-
     const val URL_LISTAR_USUARIOS   = "$BASE_URL/listar_usuarios.php"
-
     const val URL_MODIFICAR_USUARIO = "$BASE_URL/modificar_usuario.php"
-
     const val URL_ELIMINAR_USUARIO  = "$BASE_URL/eliminar_usuario.php"
-
     const val URL_OBTENER_CONFIGURACION = "$BASE_URL/obtener_configuracion.php"
-
     const val URL_ESTADO_VALVULAS   = "$BASE_URL/estado_valvulas.php"
-
     const val URL_CONTROLAR_VALVULA = "$BASE_URL/controlar_valvula.php"
+    const val URL_ESTADO_BOMBAS   = "$BASE_URL/estado_bombas.php"
+    const val URL_CONTROLAR_BOMBA = "$BASE_URL/controlar_bomba.php"
+    const val URL_OBTENER_CONFIG_TANQUE = "$BASE_URL/obtener_configuracion_tanque.php"
+    const val URL_ACTUALIZAR_CONFIG_TANQUE = "$BASE_URL/actualizar_configuracion_tanque.php"
 
 }

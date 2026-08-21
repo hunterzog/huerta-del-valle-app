@@ -53,8 +53,13 @@
         <activity android:name=".ModificarUsuarioActivity"/>
 
         <!-- Pantalla de control manual de las 5 electroválvulas -->
+        <activity android:name=".ControlValvulasActivity" android:exported="false" />
+        <!-- Pantalla de control de las 2 bombas de riego -->
         <activity
-            android:name=".ControlValvulasActivity"
+            android:name=".ControlBombasActivity" android:exported="false" />
+
+        <activity
+            android:name=".NivelAguaActivity"
             android:exported="false" />
 
     </application>

@@ -96,9 +96,11 @@ class ProyectosActivity : AppCompatActivity() {
 
         // Botón administración
         btnAdministracion.setOnClickListener {
+            val activo = listaProyectos.find { it["estado"] == "activo" }
             val intent = Intent(this, AdministracionActivity::class.java)
             intent.putExtra("rol", rol)
             intent.putExtra("id_usuario", idUsuario)
+            intent.putExtra("id_proyecto", activo?.get("id_proyecto")?.toInt() ?: 0)
             startActivity(intent)
         }
 
