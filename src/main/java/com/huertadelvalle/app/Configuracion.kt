@@ -1,7 +1,10 @@
+
+
+
 package com.huertadelvalle.app
 
 object Configuracion {
-    // Dirección del servidor - cambiar aquí si cambia la IP
+    // Dirección del servidor.
     private const val IP = "192.168.1.222"
     private const val BASE_URL = "http://$IP/api"
 
@@ -25,5 +28,16 @@ object Configuracion {
     const val URL_CONTROLAR_BOMBA = "$BASE_URL/controlar_bomba.php"
     const val URL_OBTENER_CONFIG_TANQUE = "$BASE_URL/obtener_configuracion_tanque.php"
     const val URL_ACTUALIZAR_CONFIG_TANQUE = "$BASE_URL/actualizar_configuracion_tanque.php"
+    const val URL_OBTENER_EVALUACION = "$BASE_URL/obtener_evaluacion_diaria.php"
+    const val URL_GUARDAR_EVALUACION = "$BASE_URL/guardar_evaluacion_diaria.php"
+    const val URL_HISTORIAL_EVALUACIONES = "$BASE_URL/historial_evaluaciones.php"
+    const val URL_INFORME_PARCIAL = "$BASE_URL/informe_parcial.php"
+    const val URL_INFORME_FINAL = "$BASE_URL/informe_final.php"
+
+    fun urlArchivo(ruta: String): String {
+        // Completa la ruta de la foto.
+        if (ruta.startsWith("http://") || ruta.startsWith("https://")) return ruta
+        return "$BASE_URL/${ruta.trimStart('/')}"
+    }
 
 }

@@ -117,6 +117,17 @@
             android:padding="16dp"
             android:layout_marginBottom="8dp"/>
 
+        <!-- Informe parcial -->
+        <Button
+            android:id="@+id/btnInformeParcial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📄 Informe Parcial"
+            android:backgroundTint="#455A64"
+            android:textColor="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"/>
+
         <!-- Finalizar proyecto -->
         <Button
             android:id="@+id/btnFinalizarProyecto"

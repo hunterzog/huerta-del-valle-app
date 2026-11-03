@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Permiso para conectarse a internet y a la API -->
+    <!-- Acceso a la API -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- Permiso de cámara -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- Cámara opcional -->
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="false" />
 
     <application
         android:usesCleartextTraffic="true"
@@ -25,42 +31,54 @@
             </intent-filter>
         </activity>
 
-        <!-- Pantalla de registro de usuarios -->
+        <!-- Registro -->
         <activity android:name=".RegistroActivity"/>
 
-        <!-- Pantalla de lista de proyectos -->
+        <!-- Proyectos -->
         <activity android:name=".ProyectosActivity"/>
 
-        <!-- Pantalla de nuevo proyecto -->
+        <!-- Nuevo proyecto -->
         <activity android:name=".NuevoProyectoActivity"/>
 
-        <!-- Pantalla de configuración del cultivo -->
+        <!-- Configuración -->
         <activity android:name=".ConfiguracionCultivoActivity"/>
 
-        <!-- Pantalla de proyecto activo -->
+        <!-- Proyecto activo -->
         <activity android:name=".ProyectoActivoActivity"/>
 
-        <!-- Pantalla de monitoreo en tiempo real -->
+        <!-- Monitoreo -->
         <activity android:name=".MonitoreoActivity"/>
 
-        <!-- Pantalla de administración - solo administrador -->
+        <!-- Administración -->
         <activity android:name=".AdministracionActivity"/>
 
-        <!-- Pantalla de gestión de usuarios - CRUD completo -->
+        <!-- Gestión de usuarios -->
         <activity android:name=".GestionUsuariosActivity"/>
 
-        <!-- Pantalla de modificar usuario -->
+        <!-- Modificar usuario -->
         <activity android:name=".ModificarUsuarioActivity"/>
 
-        <!-- Pantalla de control manual de las 5 electroválvulas -->
+        <!-- Control de válvulas -->
         <activity android:name=".ControlValvulasActivity" android:exported="false" />
-        <!-- Pantalla de control de las 2 bombas de riego -->
-        <activity
-            android:name=".ControlBombasActivity" android:exported="false" />
 
+        <!-- Control de bombas -->
+        <activity android:name=".ControlBombasActivity" android:exported="false" />
+
+        <!-- Nivel de agua -->
+        <activity android:name=".NivelAguaActivity" android:exported="false" />
+
+        <!-- Evaluación diaria -->
+        <activity android:name=".EvaluacionDiariaActivity"/>
+
+        <!-- Historial de evaluaciones -->
+        <activity android:name=".HistorialEvaluacionesActivity"/>
+
+        <!-- Informe parcial -->
+        <activity android:name=".InformeParcialActivity"/>
+
+        <!-- Informe final -->
         <activity
-            android:name=".NivelAguaActivity"
-            android:exported="false" />
+            android:name=".InformeFinalActivity" android:exported="false" />
 
     </application>
 

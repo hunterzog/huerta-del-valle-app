@@ -198,6 +198,47 @@
                 android:padding="12dp"
                 android:layout_marginBottom="24dp"/>
 
+            <!-- Selfie opcional -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fotografía del usuario"
+                android:textColor="#212121"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="La fotografía actual se conserva si no toma una nueva."
+                android:textColor="#757575"
+                android:textSize="11sp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Vista previa -->
+            <ImageView
+                android:id="@+id/ivFotoUsuario"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#E0E0E0"
+                android:contentDescription="Selfie del usuario"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_camera"
+                android:padding="32dp"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/btnTomarSelfie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tomar nueva selfie"
+                android:backgroundTint="#1565C0"
+                android:textColor="#FFFFFF"
+                android:padding="14dp"
+                android:layout_marginBottom="24dp"/>
+
             <!-- Botones -->
             <Button
                 android:id="@+id/btnModificar"

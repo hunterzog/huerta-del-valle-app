@@ -19,7 +19,8 @@ class ControlBombasActivity : AppCompatActivity() {
     private lateinit var tvEstado: Array<TextView>
     private lateinit var btnVolver: Button
 
-    private val nombreBomba = arrayOf("Bomba A", "Bomba B")
+    // Nombres visibles en la aplicación.
+    private val nombreBomba = arrayOf("Bomba A - Mezcla", "Bomba B - Riego")
 
     // Guardan lo que sabemos del servidor, para no pisarnos con el usuario
     private val modoManualActual = BooleanArray(2)
@@ -156,7 +157,11 @@ class ControlBombasActivity : AppCompatActivity() {
             tvEstado[indice].text = if (encendida) "encendida (manual)" else "apagada (manual)"
             tvEstado[indice].setTextColor(if (encendida) 0xFF2E7D32.toInt() else 0xFF888888.toInt())
         } else {
-            tvEstado[indice].text = "según horario (automático)"
+            tvEstado[indice].text = if (indice == 0) {
+                "mezcla automática tras dosificar"
+            } else {
+                "riego según horario"
+            }
             tvEstado[indice].setTextColor(0xFF888888.toInt())
         }
     }

@@ -17,11 +17,11 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
     private lateinit var etNombreSemilla: EditText
     private lateinit var etNombreNutriente: EditText
     private lateinit var etComponente1Nombre: EditText
-    private lateinit var etComponente1Cantidad: EditText
+    private lateinit var etComponente1Dosis: EditText
     private lateinit var etComponente2Nombre: EditText
-    private lateinit var etComponente2Cantidad: EditText
+    private lateinit var etComponente2Dosis: EditText
     private lateinit var etComponente3Nombre: EditText
-    private lateinit var etComponente3Cantidad: EditText
+    private lateinit var etComponente3Dosis: EditText
     private lateinit var etPhMinimo: EditText
     private lateinit var etPhMaximo: EditText
     private lateinit var etTdsMinimo: EditText
@@ -37,11 +37,11 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
         etNombreSemilla       = findViewById(R.id.etNombreSemilla)
         etNombreNutriente     = findViewById(R.id.etNombreNutriente)
         etComponente1Nombre   = findViewById(R.id.etComponente1Nombre)
-        etComponente1Cantidad = findViewById(R.id.etComponente1Cantidad)
+        etComponente1Dosis    = findViewById(R.id.etComponente1Dosis)
         etComponente2Nombre   = findViewById(R.id.etComponente2Nombre)
-        etComponente2Cantidad = findViewById(R.id.etComponente2Cantidad)
+        etComponente2Dosis    = findViewById(R.id.etComponente2Dosis)
         etComponente3Nombre   = findViewById(R.id.etComponente3Nombre)
-        etComponente3Cantidad = findViewById(R.id.etComponente3Cantidad)
+        etComponente3Dosis    = findViewById(R.id.etComponente3Dosis)
         etPhMinimo            = findViewById(R.id.etPhMinimo)
         etPhMaximo             = findViewById(R.id.etPhMaximo)
         etTdsMinimo            = findViewById(R.id.etTdsMinimo)
@@ -64,11 +64,11 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
 
             // Precargar componentes
             intent.getStringExtra("comp1_nombre")?.let { etComponente1Nombre.setText(it) }
-            intent.getStringExtra("comp1_cantidad")?.let { etComponente1Cantidad.setText(it) }
+            intent.getStringExtra("comp1_dosis")?.let { etComponente1Dosis.setText(it) }
             intent.getStringExtra("comp2_nombre")?.let { etComponente2Nombre.setText(it) }
-            intent.getStringExtra("comp2_cantidad")?.let { etComponente2Cantidad.setText(it) }
+            intent.getStringExtra("comp2_dosis")?.let { etComponente2Dosis.setText(it) }
             intent.getStringExtra("comp3_nombre")?.let { etComponente3Nombre.setText(it) }
-            intent.getStringExtra("comp3_cantidad")?.let { etComponente3Cantidad.setText(it) }
+            intent.getStringExtra("comp3_dosis")?.let { etComponente3Dosis.setText(it) }
         }
 
         // Tooltips
@@ -84,16 +84,24 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
                 "TDS mide la concentración de nutrientes en el agua en partes por millón (ppm).")
         }
 
+        val tvTooltipDosis = findViewById<TextView>(R.id.tvTooltipDosis)
+        tvTooltipDosis.setOnClickListener {
+            Notificacion.informacion(
+                this,
+                "Puedes elegir de 1 a 20 dosis. Cada dosis abre la válvula durante 5 segundos."
+            )
+        }
+
         // Botón guardar
         btnGuardarConfiguracion.setOnClickListener {
             val semilla       = etNombreSemilla.text.toString().trim()
             val nutriente     = etNombreNutriente.text.toString().trim()
             val comp1Nombre   = etComponente1Nombre.text.toString().trim()
-            val comp1Cantidad = etComponente1Cantidad.text.toString().trim()
+            val comp1Dosis    = etComponente1Dosis.text.toString().trim()
             val comp2Nombre   = etComponente2Nombre.text.toString().trim()
-            val comp2Cantidad = etComponente2Cantidad.text.toString().trim()
+            val comp2Dosis    = etComponente2Dosis.text.toString().trim()
             val comp3Nombre   = etComponente3Nombre.text.toString().trim()
-            val comp3Cantidad = etComponente3Cantidad.text.toString().trim()
+            val comp3Dosis    = etComponente3Dosis.text.toString().trim()
             val phMinimo      = etPhMinimo.text.toString().trim()
             val phMaximo      = etPhMaximo.text.toString().trim()
             val tdsMinimo     = etTdsMinimo.text.toString().trim()
@@ -103,7 +111,11 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
             etNombreSemilla.error       = null
             etNombreNutriente.error     = null
             etComponente1Nombre.error   = null
-            etComponente1Cantidad.error = null
+            etComponente1Dosis.error    = null
+            etComponente2Nombre.error   = null
+            etComponente2Dosis.error    = null
+            etComponente3Nombre.error   = null
+            etComponente3Dosis.error    = null
             etPhMinimo.error            = null
             etPhMaximo.error            = null
             etTdsMinimo.error           = null
@@ -126,10 +138,40 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
                 if (!hayError) etComponente1Nombre.requestFocus()
                 hayError = true
             }
-            if (comp1Cantidad.isEmpty()) {
-                etComponente1Cantidad.error = "La cantidad es obligatoria"
-                if (!hayError) etComponente1Cantidad.requestFocus()
+            val dosis1 = comp1Dosis.toIntOrNull()
+            if (dosis1 == null || dosis1 !in 1..20) {
+                etComponente1Dosis.error = "Ingresa entre 1 y 20 dosis"
+                if (!hayError) etComponente1Dosis.requestFocus()
                 hayError = true
+            }
+
+            // Valida componentes opcionales
+            val dosis2 = comp2Dosis.toIntOrNull()
+            if (comp2Nombre.isNotEmpty() || comp2Dosis.isNotEmpty()) {
+                if (comp2Nombre.isEmpty()) {
+                    etComponente2Nombre.error = "Ingresa el nombre"
+                    if (!hayError) etComponente2Nombre.requestFocus()
+                    hayError = true
+                }
+                if (dosis2 == null || dosis2 !in 1..20) {
+                    etComponente2Dosis.error = "Ingresa entre 1 y 20 dosis"
+                    if (!hayError) etComponente2Dosis.requestFocus()
+                    hayError = true
+                }
+            }
+
+            val dosis3 = comp3Dosis.toIntOrNull()
+            if (comp3Nombre.isNotEmpty() || comp3Dosis.isNotEmpty()) {
+                if (comp3Nombre.isEmpty()) {
+                    etComponente3Nombre.error = "Ingresa el nombre"
+                    if (!hayError) etComponente3Nombre.requestFocus()
+                    hayError = true
+                }
+                if (dosis3 == null || dosis3 !in 1..20) {
+                    etComponente3Dosis.error = "Ingresa entre 1 y 20 dosis"
+                    if (!hayError) etComponente3Dosis.requestFocus()
+                    hayError = true
+                }
             }
             if (phMinimo.isEmpty()) {
                 etPhMinimo.error = "El pH mínimo es obligatorio"
@@ -182,18 +224,18 @@ class ConfiguracionCultivoActivity : AppCompatActivity() {
             val componentes = JSONArray()
             componentes.put(JSONObject().apply {
                 put("nombre", comp1Nombre)
-                put("cantidad", comp1Cantidad)
+                put("cantidad_dosis", dosis1)
             })
-            if (comp2Nombre.isNotEmpty() && comp2Cantidad.isNotEmpty()) {
+            if (comp2Nombre.isNotEmpty()) {
                 componentes.put(JSONObject().apply {
                     put("nombre", comp2Nombre)
-                    put("cantidad", comp2Cantidad)
+                    put("cantidad_dosis", dosis2)
                 })
             }
-            if (comp3Nombre.isNotEmpty() && comp3Cantidad.isNotEmpty()) {
+            if (comp3Nombre.isNotEmpty()) {
                 componentes.put(JSONObject().apply {
                     put("nombre", comp3Nombre)
-                    put("cantidad", comp3Cantidad)
+                    put("cantidad_dosis", dosis3)
                 })
             }
 

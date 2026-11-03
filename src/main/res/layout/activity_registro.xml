@@ -213,6 +213,39 @@
             android:textColor="#B71C1C"
             android:layout_marginBottom="24dp"/>
 
+        <!-- Selfie obligatoria -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selfie del usuario (*)"
+            android:textSize="13sp"
+            android:textColor="#B71C1C"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Vista previa -->
+        <ImageView
+            android:id="@+id/ivFotoUsuario"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#E0E0E0"
+            android:contentDescription="Selfie del usuario"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_camera"
+            android:padding="32dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnTomarSelfie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tomar selfie"
+            android:backgroundTint="#1565C0"
+            android:textColor="#FFFFFF"
+            android:padding="14dp"
+            android:layout_marginBottom="24dp"/>
+
         <!-- Botón principal -->
         <Button
             android:id="@+id/btnRegistrar"

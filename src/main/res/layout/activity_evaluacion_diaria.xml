@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Encabezado -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Evaluación diaria"
+            android:textColor="#1B5E20"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvProyectoEvaluacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:textColor="#2E7D32"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFechaEvaluacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#555555"
+            android:textSize="16sp" />
+
+        <!-- Referencia Likert -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="#FFFFFF"
+            android:padding="10dp"
+            android:text="1 Muy en desacuerdo  ·  2 En desacuerdo\n3 Neutral  ·  4 De acuerdo  ·  5 Muy de acuerdo"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <!-- Ayuda de la escala -->
+        <TextView
+            android:id="@+id/tvTooltipLikert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:text="ⓘ Ayuda sobre la escala"
+            android:textColor="#1565C0"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Crecimiento -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="1. Las plantas presentan un crecimiento adecuado (*)"
+            android:textColor="#212121"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rgCrecimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbCrecimiento1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="1" android:text="1" />
+            <RadioButton android:id="@+id/rbCrecimiento2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="2" android:text="2" />
+            <RadioButton android:id="@+id/rbCrecimiento3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="3" android:text="3" />
+            <RadioButton android:id="@+id/rbCrecimiento4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="4" android:text="4" />
+            <RadioButton android:id="@+id/rbCrecimiento5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Color de hojas -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="2. Las hojas mantienen un color saludable (*)" android:textColor="#212121" android:textSize="16sp" android:textStyle="bold" />
+        <RadioGroup android:id="@+id/rgColorHojas" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbColor1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="1" android:text="1" />
+            <RadioButton android:id="@+id/rbColor2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="2" android:text="2" />
+            <RadioButton android:id="@+id/rbColor3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="3" android:text="3" />
+            <RadioButton android:id="@+id/rbColor4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="4" android:text="4" />
+            <RadioButton android:id="@+id/rbColor5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Firmeza -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="3. Las plantas presentan buena firmeza (*)" android:textColor="#212121" android:textSize="16sp" android:textStyle="bold" />
+        <RadioGroup android:id="@+id/rgFirmeza" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbFirmeza1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="1" android:text="1" />
+            <RadioButton android:id="@+id/rbFirmeza2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="2" android:text="2" />
+            <RadioButton android:id="@+id/rbFirmeza3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="3" android:text="3" />
+            <RadioButton android:id="@+id/rbFirmeza4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="4" android:text="4" />
+            <RadioButton android:id="@+id/rbFirmeza5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Raíces -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="4. Las raíces presentan un aspecto saludable (*)" android:textColor="#212121" android:textSize="16sp" android:textStyle="bold" />
+        <RadioGroup android:id="@+id/rgRaices" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbRaices1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="1" android:text="1" />
+            <RadioButton android:id="@+id/rbRaices2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="2" android:text="2" />
+            <RadioButton android:id="@+id/rbRaices3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="3" android:text="3" />
+            <RadioButton android:id="@+id/rbRaices4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="4" android:text="4" />
+            <RadioButton android:id="@+id/rbRaices5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Plagas -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="5. El cultivo está libre de plagas o enfermedades visibles (*)" android:textColor="#212121" android:textSize="16sp" android:textStyle="bold" />
+        <RadioGroup android:id="@+id/rgSinPlagas" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbPlagas1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="1" android:text="1" />
+            <RadioButton android:id="@+id/rbPlagas2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="2" android:text="2" />
+            <RadioButton android:id="@+id/rbPlagas3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="3" android:text="3" />
+            <RadioButton android:id="@+id/rbPlagas4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="4" android:text="4" />
+            <RadioButton android:id="@+id/rbPlagas5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:tag="5" android:text="5" />
+        </RadioGroup>
+
+        <!-- Resultado -->
+        <TextView
+            android:id="@+id/tvPromedioEvaluacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="Completa los cinco criterios"
+            android:textColor="#1B5E20"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <!-- Nota de campos -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="(*) Campos obligatorios"
+            android:textColor="#B71C1C"
+            android:textSize="14sp" />
+
+        <!-- Ayuda de observación -->
+        <TextView
+            android:id="@+id/tvTooltipObservacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:text="ⓘ Ayuda sobre la observación"
+            android:textColor="#1565C0"
+            android:textSize="14sp" />
+
+        <!-- Observación opcional -->
+        <EditText
+            android:id="@+id/etObservacion"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginTop="18dp"
+            android:gravity="top|start"
+            android:hint="Observación opcional"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLength="500"
+            android:padding="12dp" />
+
+        <!-- Ayuda de fotografía -->
+        <TextView
+            android:id="@+id/tvTooltipFotoEvaluacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:text="ⓘ Ayuda sobre la fotografía"
+            android:textColor="#1565C0"
+            android:textSize="14sp" />
+
+        <!-- Foto opcional -->
+        <ImageView
+            android:id="@+id/ivFotoCultivo"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_marginTop="16dp"
+            android:background="#EEEEEE"
+            android:contentDescription="Fotografía opcional del cultivo"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_camera" />
+
+        <Button
+            android:id="@+id/btnTomarFotoCultivo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#00838F"
+            android:text="Tomar foto opcional"
+            android:textColor="#FFFFFF" />
+
+        <!-- Acciones -->
+        <Button
+            android:id="@+id/btnGuardarEvaluacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#2E7D32"
+            android:text="Guardar evaluación"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnVolverEvaluacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Volver"
+            android:textColor="#2E7D32" />
+    </LinearLayout>
+</ScrollView>

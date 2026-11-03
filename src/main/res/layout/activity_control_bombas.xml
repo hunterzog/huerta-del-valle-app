@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="En modo Automático, la bomba sigue el horario configurado en el proyecto. En modo Manual, vos controlás encendido/apagado directamente."
+            android:text="La bomba A mezcla después de dosificar. La bomba B realiza el riego. En modo manual puedes probar cada bomba."
             android:textColor="#555555"
             android:textSize="14sp"
             android:layout_marginBottom="20dp"/>
@@ -47,7 +47,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bomba A"
+                android:text="Bomba A - Mezcla"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#222222"
@@ -111,7 +111,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bomba B"
+                android:text="Bomba B - Riego"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#222222"

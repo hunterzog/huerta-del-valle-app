@@ -11,18 +11,22 @@ import androidx.recyclerview.widget.RecyclerView
 class ProyectoAdapter(
     private val proyectos: MutableList<Map<String, String>>,
     private val onEliminar: (String, Int) -> Unit,
-    private val onCancelar: (String, Int) -> Unit
+    private val onCancelar: (String, Int) -> Unit,
+    private val onInformeFinal: (String, String) -> Unit,
+    private val onInformeParcial: (String, String) -> Unit
 
 ) : RecyclerView.Adapter<ProyectoAdapter.ProyectoViewHolder>() {
 
     // ViewHolder que contiene las vistas de cada item
     class ProyectoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvNombre: TextView  = itemView.findViewById(R.id.tvNombreProyecto)
-        val tvFecha: TextView   = itemView.findViewById(R.id.tvFechaInicio)
-        val tvEstado: TextView  = itemView.findViewById(R.id.tvEstado)
-        val btnCancelar: Button = itemView.findViewById(R.id.btnCancelarProyecto)
-        val btnEliminar: Button = itemView.findViewById(R.id.btnEliminarProyecto)
-        val vistaRaiz: View     = itemView
+        val tvNombre: TextView         = itemView.findViewById(R.id.tvNombreProyecto)
+        val tvFecha: TextView          = itemView.findViewById(R.id.tvFechaInicio)
+        val tvEstado: TextView         = itemView.findViewById(R.id.tvEstado)
+        val btnCancelar: Button        = itemView.findViewById(R.id.btnCancelarProyecto)
+        val btnInformeFinal: Button    = itemView.findViewById(R.id.btnInformeFinal)
+        val btnInformeParcial: Button  = itemView.findViewById(R.id.btnInformeParcial)
+        val btnEliminar: Button        = itemView.findViewById(R.id.btnEliminarProyecto)
+        val vistaRaiz: View            = itemView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProyectoViewHolder {
@@ -34,55 +38,76 @@ class ProyectoAdapter(
     override fun onBindViewHolder(holder: ProyectoViewHolder, position: Int) {
         val proyecto = proyectos[position]
 
+        val idProyecto     = proyecto["id_proyecto"] ?: ""
+        val nombreProyecto = proyecto["nombre"] ?: ""
+        val estado         = proyecto["estado"] ?: ""
+        // Estado real antes de eliminar: decide qué informe tiene el proyecto.
+        val estadoOriginal = proyecto["estado_original"] ?: estado
+
         // Asignar datos
-        holder.tvNombre.text = proyecto["nombre"]
+        holder.tvNombre.text = nombreProyecto
         holder.tvFecha.text  = "Inicio: ${proyecto["fecha_inicio"]}"
-        holder.tvEstado.text = proyecto["estado"]?.uppercase()
+        holder.tvEstado.text = estado.uppercase()
 
         // Color del estado y borde izquierdo según estado
-        val color = when (proyecto["estado"]) {
+        val color = when (estado) {
             "activo"     -> "#2E7D32"
             "cancelado"  -> "#757575"
             "finalizado" -> "#1565C0"
+            "eliminado"  -> "#8E3B3B"
             else         -> "#757575"
         }
 
         // Color del badge de estado
         holder.tvEstado.setBackgroundColor(Color.parseColor(color))
 
-        // Borde izquierdo de color según estado
+        // Borde de color según estado
         holder.vistaRaiz.background = android.graphics.drawable.GradientDrawable().apply {
             setColor(Color.WHITE)
             setStroke(8, Color.parseColor(color))
             cornerRadius = 12f
         }.also {
-            // Aplicar solo borde izquierdo
             holder.vistaRaiz.setPadding(16, 8, 8, 8)
         }
 
-        // Mostrar cancelar solo si está activo
-        if (proyecto["estado"] == "activo") {
+        // Cancelar: solo proyecto activo
+        if (estado == "activo") {
             holder.btnCancelar.visibility = View.VISIBLE
-            holder.btnCancelar.setOnClickListener {
-                onCancelar(proyecto["id_proyecto"] ?: "", position)
-            }
+            holder.btnCancelar.setOnClickListener { onCancelar(idProyecto, position) }
         } else {
             holder.btnCancelar.visibility = View.GONE
+            holder.btnCancelar.setOnClickListener(null)
         }
 
-        // Botón eliminar
-        holder.btnEliminar.setOnClickListener {
-            onEliminar(proyecto["id_proyecto"] ?: "", position)
+        // Informe final: proyectos que se finalizaron (aunque luego se eliminen)
+        if (estadoOriginal == "finalizado") {
+            holder.btnInformeFinal.visibility = View.VISIBLE
+            holder.btnInformeFinal.setOnClickListener { onInformeFinal(idProyecto, nombreProyecto) }
+        } else {
+            holder.btnInformeFinal.visibility = View.GONE
+            holder.btnInformeFinal.setOnClickListener(null)
+        }
+
+        // Informe parcial: proyectos que se cancelaron (aunque luego se eliminen)
+        if (estadoOriginal == "cancelado") {
+            holder.btnInformeParcial.visibility = View.VISIBLE
+            holder.btnInformeParcial.setOnClickListener { onInformeParcial(idProyecto, nombreProyecto) }
+        } else {
+            holder.btnInformeParcial.visibility = View.GONE
+            holder.btnInformeParcial.setOnClickListener(null)
+        }
+
+        // Eliminar: solo cancelados o finalizados que todavía no fueron eliminados
+        if (estado == "cancelado" || estado == "finalizado") {
+            holder.btnEliminar.visibility = View.VISIBLE
+            holder.btnEliminar.setOnClickListener { onEliminar(idProyecto, position) }
+        } else {
+            holder.btnEliminar.visibility = View.GONE
+            holder.btnEliminar.setOnClickListener(null)
         }
     }
 
     override fun getItemCount() = proyectos.size
-
-    // Eliminar item de la lista visualmente
-    fun eliminarItem(position: Int) {
-        proyectos.removeAt(position)
-        notifyItemRemoved(position)
-    }
 
     // Filtrar lista localmente
     fun filtrar(listaCompleta: List<Map<String, String>>, texto: String, orden: String) {

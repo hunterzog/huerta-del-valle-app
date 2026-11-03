@@ -167,31 +167,41 @@ class ProyectosActivity : AppCompatActivity() {
                     val proyectos = respuesta.getJSONArray("proyectos")
                     for (i in 0 until proyectos.length()) {
                         val p = proyectos.getJSONObject(i)
+                        val estado = p.getString("estado")
                         listaProyectos.add(mapOf(
-                            "id_proyecto"  to p.getString("id_proyecto"),
-                            "nombre"       to p.getString("nombre"),
-                            "fecha_inicio" to p.getString("fecha_inicio"),
-                            "estado"       to p.getString("estado"),
-                            "semilla"      to if (p.isNull("nombre_semilla")) "" else p.getString("nombre_semilla"),
-                            "nutriente"    to if (p.isNull("nombre_comercial")) "" else p.getString("nombre_comercial")
+                            "id_proyecto"     to p.getString("id_proyecto"),
+                            "nombre"          to p.getString("nombre"),
+                            "fecha_inicio"    to p.getString("fecha_inicio"),
+                            "estado"          to estado,
+                            // Estado real antes de eliminar (finalizado/cancelado).
+                            // Se usa para decidir qué informe se puede ver.
+                            "estado_original" to p.optString("estado_original", estado),
+                            "semilla"         to if (p.isNull("nombre_semilla")) "" else p.getString("nombre_semilla"),
+                            "nutriente"       to if (p.isNull("nombre_comercial")) "" else p.getString("nombre_comercial")
                         ))
                     }
 
-            // Copiar lista completa para filtrado
+                    // Copiar lista completa para filtrado
                     listaProyectosCompleta.clear()
                     listaProyectosCompleta.addAll(listaProyectos)
 
-            // Actualizar lista con adapter
+                    // Actualizar lista con adapter
                     rvProyectos.adapter = ProyectoAdapter(listaProyectos,
                         onEliminar = { idProyecto, position ->
                             confirmarEliminar(idProyecto, position)
                         },
                         onCancelar = { idProyecto, position ->
                             confirmarCancelar(idProyecto, position)
+                        },
+                        onInformeFinal = { idProyecto, nombreProyecto ->
+                            abrirInformeFinal(idProyecto, nombreProyecto)
+                        },
+                        onInformeParcial = { idProyecto, nombreProyecto ->
+                            abrirInformeParcial(idProyecto, nombreProyecto)
                         }
                     )
 
-                // Aplicar filtro y ordenamiento
+                    // Aplicar filtro y ordenamiento
                     filtrarProyectos()
                 } else {
                     Notificacion.error(this, "Error al cargar proyectos")
@@ -203,6 +213,22 @@ class ProyectosActivity : AppCompatActivity() {
         )
 
         queue.add(peticion)
+    }
+
+    // Abre el informe del proyecto finalizado.
+    private fun abrirInformeFinal(idProyecto: String, nombreProyecto: String) {
+        val intent = Intent(this, InformeFinalActivity::class.java)
+        intent.putExtra("id_proyecto", idProyecto.toIntOrNull() ?: 0)
+        intent.putExtra("nombre_proyecto", nombreProyecto)
+        startActivity(intent)
+    }
+
+    // Abre el informe del proyecto cancelado.
+    private fun abrirInformeParcial(idProyecto: String, nombreProyecto: String) {
+        val intent = Intent(this, InformeParcialActivity::class.java)
+        intent.putExtra("id_proyecto", idProyecto.toIntOrNull() ?: 0)
+        intent.putExtra("nombre_proyecto", nombreProyecto)
+        startActivity(intent)
     }
 
     private fun confirmarCancelar(idProyecto: String, position: Int) {
@@ -246,7 +272,7 @@ class ProyectosActivity : AppCompatActivity() {
     private fun confirmarEliminar(idProyecto: String, position: Int) {
         android.app.AlertDialog.Builder(this)
             .setTitle("Eliminar proyecto")
-            .setMessage("¿Estás seguro que querés eliminar este proyecto?")
+            .setMessage("¿Estás seguro que querés eliminar este proyecto? Sus datos se conservarán para consultas y comparaciones.")
             .setPositiveButton("Eliminar") { _, _ ->
                 eliminarProyecto(idProyecto, position)
             }
@@ -267,7 +293,10 @@ class ProyectosActivity : AppCompatActivity() {
                 val mensaje = respuesta.getString("mensaje")
                 if (success) {
                     Notificacion.exito(this, mensaje)
-                    (rvProyectos.adapter as ProyectoAdapter).eliminarItem(position)
+                    // Borrado lógico: el proyecto sigue existiendo con estado
+                    // "eliminado", así que se recarga la lista en vez de quitarlo.
+                    val sesion = SesionManager(this)
+                    cargarProyectos(sesion.getIdUsuario())
                 } else {
                     Notificacion.error(this, mensaje)
                 }

@@ -48,7 +48,33 @@
         android:textSize="12sp"
         android:padding="8dp"/>
 
-    <!-- Botón eliminar proyecto -->
+    <!-- Informe del proyecto finalizado (también si luego se eliminó) -->
+    <Button
+        android:id="@+id/btnInformeFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#C62828"
+        android:padding="8dp"
+        android:text="Ver informe final"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <!-- Informe del proyecto cancelado (también si luego se eliminó) -->
+    <Button
+        android:id="@+id/btnInformeParcial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#00796B"
+        android:padding="8dp"
+        android:text="Ver informe parcial"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <!-- Botón eliminar proyecto (solo cancelados o finalizados) -->
     <Button
         android:id="@+id/btnEliminarProyecto"
         android:layout_width="wrap_content"

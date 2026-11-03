@@ -110,6 +110,17 @@
                 android:textColorHint="#757575"
                 android:layout_marginBottom="8dp"/>
 
+            <!-- Ayuda de dosificación -->
+            <TextView
+                android:id="@+id/tvTooltipDosis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="8dp"
+                android:text="ⓘ Ayuda sobre la dosis"
+                android:textColor="#1565C0"
+                android:textSize="14sp" />
+
             <!-- Componente 1 (*) -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,7 +155,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:hint="Nombre"
+                    android:hint="Nombre del componente"
                     android:maxLength="100"
                     android:background="@drawable/bg_input"
                     android:padding="16dp"
@@ -153,12 +164,13 @@
                     android:layout_marginEnd="8dp"/>
 
                 <EditText
-                    android:id="@+id/etComponente1Cantidad"
+                    android:id="@+id/etComponente1Dosis"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="ml/L"
-                    android:inputType="numberDecimal"
+                    android:hint="N.º dosis"
+                    android:inputType="number"
+                    android:maxLength="2"
                     android:background="@drawable/bg_input"
                     android:padding="16dp"
                     android:textColor="#212121"
@@ -186,7 +198,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:hint="Nombre"
+                    android:hint="Nombre del componente"
                     android:maxLength="100"
                     android:background="@drawable/bg_input"
                     android:padding="16dp"
@@ -195,12 +207,13 @@
                     android:layout_marginEnd="8dp"/>
 
                 <EditText
-                    android:id="@+id/etComponente2Cantidad"
+                    android:id="@+id/etComponente2Dosis"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="ml/L"
-                    android:inputType="numberDecimal"
+                    android:hint="N.º dosis"
+                    android:inputType="number"
+                    android:maxLength="2"
                     android:background="@drawable/bg_input"
                     android:padding="16dp"
                     android:textColor="#212121"
@@ -228,7 +241,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:hint="Nombre"
+                    android:hint="Nombre del componente"
                     android:maxLength="100"
                     android:background="@drawable/bg_input"
                     android:padding="16dp"
@@ -237,12 +250,13 @@
                     android:layout_marginEnd="8dp"/>
 
                 <EditText
-                    android:id="@+id/etComponente3Cantidad"
+                    android:id="@+id/etComponente3Dosis"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="ml/L"
-                    android:inputType="numberDecimal"
+                    android:hint="N.º dosis"
+                    android:inputType="number"
+                    android:maxLength="2"
                     android:background="@drawable/bg_input"
                     android:padding="16dp"
                     android:textColor="#212121"

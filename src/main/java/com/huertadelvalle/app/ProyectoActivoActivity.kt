@@ -24,6 +24,7 @@ class ProyectoActivoActivity : AppCompatActivity() {
     private lateinit var btnMonitoreo: Button
     private lateinit var btnHistorial: Button
     private lateinit var btnEvaluacion: Button
+    private lateinit var btnInformeParcial: Button
     private lateinit var btnFinalizarProyecto: Button
     private lateinit var btnVolverActivo: Button
     private lateinit var btnEditarConfiguracion: Button
@@ -41,6 +42,7 @@ class ProyectoActivoActivity : AppCompatActivity() {
         btnMonitoreo           = findViewById(R.id.btnMonitoreo)
         btnHistorial           = findViewById(R.id.btnHistorial)
         btnEvaluacion          = findViewById(R.id.btnEvaluacion)
+        btnInformeParcial      = findViewById(R.id.btnInformeParcial)
         btnFinalizarProyecto   = findViewById(R.id.btnFinalizarProyecto)
         btnVolverActivo        = findViewById(R.id.btnVolverActivo)
         btnEditarConfiguracion = findViewById(R.id.btnEditarConfiguracion)
@@ -79,12 +81,26 @@ class ProyectoActivoActivity : AppCompatActivity() {
 
         // Botón historial
         btnHistorial.setOnClickListener {
-            Notificacion.informacion(this, "Próximamente disponible")
+            val intent = Intent(this, HistorialEvaluacionesActivity::class.java)
+            intent.putExtra("id_proyecto", idProyecto)
+            intent.putExtra("nombre_proyecto", nombre)
+            startActivity(intent)
         }
 
         // Botón evaluación
         btnEvaluacion.setOnClickListener {
-            Notificacion.informacion(this, "Próximamente disponible")
+            val intent = Intent(this, EvaluacionDiariaActivity::class.java)
+            intent.putExtra("id_proyecto", idProyecto)
+            intent.putExtra("nombre_proyecto", nombre)
+            startActivity(intent)
+        }
+
+        // Botón informe parcial
+        btnInformeParcial.setOnClickListener {
+            val intent = Intent(this, InformeParcialActivity::class.java)
+            intent.putExtra("id_proyecto", idProyecto)
+            intent.putExtra("nombre_proyecto", nombre)
+            startActivity(intent)
         }
 
         // Botón editar configuración
@@ -165,15 +181,15 @@ class ProyectoActivoActivity : AppCompatActivity() {
                         org.json.JSONArray()
                     if (componentes.length() > 0) {
                         intent.putExtra("comp1_nombre",   componentes.getJSONObject(0).getString("nombre"))
-                        intent.putExtra("comp1_cantidad", componentes.getJSONObject(0).getString("cantidad"))
+                        intent.putExtra("comp1_dosis", componentes.getJSONObject(0).getString("cantidad_dosis"))
                     }
                     if (componentes.length() > 1) {
                         intent.putExtra("comp2_nombre",   componentes.getJSONObject(1).getString("nombre"))
-                        intent.putExtra("comp2_cantidad", componentes.getJSONObject(1).getString("cantidad"))
+                        intent.putExtra("comp2_dosis", componentes.getJSONObject(1).getString("cantidad_dosis"))
                     }
                     if (componentes.length() > 2) {
                         intent.putExtra("comp3_nombre",   componentes.getJSONObject(2).getString("nombre"))
-                        intent.putExtra("comp3_cantidad", componentes.getJSONObject(2).getString("cantidad"))
+                        intent.putExtra("comp3_dosis", componentes.getJSONObject(2).getString("cantidad_dosis"))
                     }
                     startActivity(intent)
                 } else {

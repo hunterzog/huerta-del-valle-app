@@ -27,7 +27,7 @@ class GestionUsuariosActivity : AppCompatActivity() {
     private lateinit var tvPagina: TextView
     private lateinit var btnNuevoUsuario: Button
     private lateinit var btnVolverAdmin: Button
-    // Variable para el spinner de ordenamiento
+    // Orden seleccionado.
     private lateinit var spinnerOrdenar: Spinner
 
     private val listaUsuarios = mutableListOf<Map<String, String>>()
@@ -163,6 +163,8 @@ class GestionUsuariosActivity : AppCompatActivity() {
                             "apellido"   to u.getString("apellido"),
                             "usuario"    to u.getString("usuario"),
                             "correo"     to (if (u.isNull("correo")) "" else u.getString("correo")),
+                            // Ruta de la selfie.
+                            "foto"       to (if (u.isNull("foto")) "" else u.getString("foto")),
                             "rol"        to u.getString("rol"),
                             "estado"     to u.getString("estado")
                         ))
@@ -177,6 +179,8 @@ class GestionUsuariosActivity : AppCompatActivity() {
                             intent.putExtra("apellido",   usuario["apellido"])
                             intent.putExtra("usuario",    usuario["usuario"])
                             intent.putExtra("correo",     usuario["correo"])
+                            // Envía la foto actual.
+                            intent.putExtra("foto",       usuario["foto"])
                             intent.putExtra("rol_editar", usuario["rol"])
                             intent.putExtra("estado",     usuario["estado"])
                             intent.putExtra("rol",        rol)
